@@ -1,2 +1,4 @@
 csv-to-oscal-cd.config
 component-definition.json
+policy
+policyreports.wgpolicyk8s.io.yaml

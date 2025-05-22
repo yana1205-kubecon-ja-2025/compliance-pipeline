@@ -20,9 +20,6 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import yaml
-from jinja2 import Template
-from pydantic.v1 import Field
-
 from c2p.common.err import C2PError
 from c2p.common.logging import getLogger
 from c2p.common.utils import get_datetime, get_dict_safely
@@ -34,6 +31,8 @@ from c2p.framework.models.pvp_result import (
     Subject,
 )
 from c2p.framework.plugin_spec import PluginConfig, PluginSpec
+from jinja2 import Template
+from pydantic.v1 import Field
 
 logger = getLogger(__name__)
 
@@ -76,18 +75,24 @@ class PluginKyverno(PluginSpec):
         results = []
         for polr in polrs:
             for result in polr['results']:
+                result['resources'] = [polr['scope']]
                 results.append(result)
         for cpolr in cpolrs:
             for result in cpolr['results']:
+                result['resources'] = [polr['scope']]
                 results.append(result)
-
         policy_names = list(map(lambda x: x['policy'], results))  # policy_name is used as check_id
         policy_names = set(policy_names)
 
         for policy_name in policy_names:
             observation = ObservationByCheck(check_id=policy_name, methods=['AUTOMATED'], collected=get_datetime())
 
-            results_per_policy = filter(lambda x: x['policy'] == policy_name, results)
+            results_per_policy = []
+            for policy in polrs + cpolrs:
+                for result in policy['results']:
+                    if result['policy'] == policy_name:
+                        result
+                        results_per_policy.append(result)
             subjects = []
             for rpp in results_per_policy:
                 result = rpp['result']

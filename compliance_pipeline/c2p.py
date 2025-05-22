@@ -7,7 +7,7 @@ import tempfile
 from c2p.framework.c2p import C2P
 from c2p.framework.models.c2p_config import C2PConfig, ComplianceOscal
 
-from c2p_plugin.kyverno import PluginConfigKyverno, PluginKyverno
+from compliance_pipeline.c2p_plugin.kyverno import PluginConfigKyverno, PluginKyverno
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -37,7 +37,7 @@ c2p = C2P(c2p_config)
 
 # Transform OSCAL (Compliance) to Policy
 base_dir = Path(__file__).parent
-policy_template_dir = f'{base_dir.absolute().as_posix()}/policy-resources'
+policy_template_dir = f'{base_dir.absolute().as_posix()}/c2p_plugin/policy-resources'
 config = PluginConfigKyverno(policy_template_dir=policy_template_dir, deliverable_policy_dir=tmpdirname)
 PluginKyverno(config).generate_pvp_policy(c2p.get_policy())
 
