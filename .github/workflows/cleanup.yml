@@ -1,0 +1,37 @@
+name: Cleanup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  cleanup:
+    runs-on: self-hosted 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Remove k8s resources
+        env:
+          KUBECONFIG: /home/runner/kubeconfig.yaml
+        run: |
+          find ./pipeline/policy -name '*.yaml' | while read file
+          do
+            kubectl delete -f $file
+          done
+          kubectl delete -f ./deployment
+      - name: Remove generated artifacts
+        run: |
+          rm ./pipeline/assessment-results.json
+          rm ./pipeline/assessment-results.md
+          rm ./pipeline/component-definition.json
+          cp ./data/component-definition.csv ./pipeline/component-definition.csv 
+      - name: Push branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add ./pipeline
+          git commit -m "Cleanup"
+          git push origin main
