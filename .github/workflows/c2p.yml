@@ -48,8 +48,12 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add ./pipeline/component-definition.json
-          git commit -m "Update policies"
-          git push origin compliance-pipeline
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update policies"
+            git push origin compliance-pipeline
+          fi
       - name: Kubectl apply policies
         env:
           KUBECONFIG: kubeconfig.yaml
