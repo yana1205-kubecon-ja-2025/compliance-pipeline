@@ -47,7 +47,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git checkout -b compliance-pipeline
           git add ./pipeline/component-definition.json
           git commit -m "Update policies"
           git push origin compliance-pipeline
@@ -89,7 +88,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git checkout -b compliance-pipeline
           git add ./pipeline/assessment-results.json ./pipeline/assessment-results.md
           git commit -m "Update Assessment Results"
           git push origin compliance-pipeline -f
