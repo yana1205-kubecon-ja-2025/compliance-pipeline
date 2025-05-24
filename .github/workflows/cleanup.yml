@@ -19,14 +19,15 @@ jobs:
         run: |
           find ./pipeline/policy -name '*.yaml' | while read file
           do
-            kubectl delete -f $file
+            kubectl delete -f $file --ignore-not-found
           done
-          kubectl delete -f ./deployment
+          kubectl delete -f ./deployment --ignore-not-found
       - name: Remove generated artifacts
         run: |
           rm ./pipeline/assessment-results.json
           rm ./pipeline/assessment-results.md
           rm ./pipeline/component-definition.json
+          rm -rf ./pipeline/policy
           cp ./data/component-definition.csv ./pipeline/component-definition.csv 
       - name: Push branch
         run: |
