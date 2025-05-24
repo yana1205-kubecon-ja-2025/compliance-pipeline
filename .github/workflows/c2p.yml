@@ -1,0 +1,117 @@
+name: C2P
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-oscal:
+    name: Update OSCAL Component Definition (JSON)
+    runs-on: self-hosted 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Convert Component Definition CSV to Component Definition JSON
+        run: |
+          python -m c2p tools csv-to-oscal-cd \
+            --title "Component Definition" \
+            --csv ./pipeline/component-definition.csv \
+            -o ./pipeline
+      - name: Push branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout -b compliance-pipeline
+          git add ./pipeline/component-definition.json
+          git commit -m "Update Component Definition"
+          git push origin compliance-pipeline -f
+
+  c2p:
+    name: Compliance to Policy (C2P)
+    needs: update-oscal
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: compliance-pipeline
+      - name: Run C2P
+        run: |
+          python -m compliance_pipeline.c2p \
+            -c ./pipeline/component-definition.json \
+            -o ./pipeline/policy
+      - name: Push branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout -b compliance-pipeline
+          git add ./pipeline/component-definition.json
+          git commit -m "Update policies"
+          git push origin compliance-pipeline
+      - name: Kubectl apply policies
+        env:
+          KUBECONFIG: kubeconfig.yaml
+        run: |
+          find ./pipeline/policy -name '*.yaml' | while read file
+          do
+            kubectl apply -f $file
+          done
+          kubectl get cpol
+          kubectl get polr -A
+  
+  p2c:
+    name: Policy Results to Compliance (P2C)
+    needs: c2p
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: compliance-pipeline
+      - name: Kubectl collect policy reports
+        env:
+          KUBECONFIG: kubeconfig.yaml
+        run: |
+          kubectl get policyreports.wgpolicyk8s.io -o yaml > ./pipeline/policyreports.wgpolicyk8s.io.yaml
+      - name: Run P2C
+        run: |
+          python -m compliance_pipeline.p2c \
+            -c ./pipeline/component-definition.json \
+            -polr ./pipeline/policyreports.wgpolicyk8s.io.yaml > ./pipeline/assessment-results.json
+          python -m c2p tools viewer \
+            -ar ./pipeline/assessment-results.json \
+            -cdef ./pipeline/component-definition.json \
+            -o ./pipeline/assessment-results.md
+      - name: Push branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout -b compliance-pipeline
+          git add ./pipeline/assessment-results.json ./pipeline/assessment-results.md
+          git commit -m "Update Assessment Results"
+          git push origin compliance-pipeline -f
+
+  pr:
+    name: Create Pull Request
+    needs: p2c
+    runs-on: self-hosted 
+    steps:
+      - name: Create pull request
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require("fs");
+            const bodyContent = fs.readFileSync("./pipeline/assessment-results.md", "utf8");
+            const res = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: "compliance-pipeline",
+              base: "main",
+              title: "Update security posture: Enforce TLS on Ingress",
+              body: bodyContent
+            });
+            core.info(`Created PR: ${res.data.html_url}`);
