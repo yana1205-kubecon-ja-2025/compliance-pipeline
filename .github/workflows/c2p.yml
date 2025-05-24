@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Convert Component Definition CSV to Component Definition JSON
         run: |
-          python -m c2p tools csv-to-oscal-cd \
+          python3 -m c2p tools csv-to-oscal-cd \
             --title "Component Definition" \
             --csv ./pipeline/component-definition.csv \
             -o ./pipeline
@@ -40,7 +40,7 @@ jobs:
           ref: compliance-pipeline
       - name: Run C2P
         run: |
-          python -m compliance_pipeline.c2p \
+          python3 -m compliance_pipeline.c2p \
             -c ./pipeline/component-definition.json \
             -o ./pipeline/policy
       - name: Push branch
@@ -78,10 +78,10 @@ jobs:
           kubectl get policyreports.wgpolicyk8s.io -o yaml > ./pipeline/policyreports.wgpolicyk8s.io.yaml
       - name: Run P2C
         run: |
-          python -m compliance_pipeline.p2c \
+          python3 -m compliance_pipeline.p2c \
             -c ./pipeline/component-definition.json \
             -polr ./pipeline/policyreports.wgpolicyk8s.io.yaml > ./pipeline/assessment-results.json
-          python -m c2p tools viewer \
+          python3 -m c2p tools viewer \
             -ar ./pipeline/assessment-results.json \
             -cdef ./pipeline/component-definition.json \
             -o ./pipeline/assessment-results.md
