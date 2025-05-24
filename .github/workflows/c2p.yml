@@ -56,7 +56,7 @@ jobs:
           fi
       - name: Kubectl apply policies
         env:
-          KUBECONFIG: kubeconfig.yaml
+          KUBECONFIG: /home/runner/kubeconfig.yaml
         run: |
           find ./pipeline/policy -name '*.yaml' | while read file
           do
@@ -76,7 +76,7 @@ jobs:
           ref: compliance-pipeline
       - name: Kubectl collect policy reports
         env:
-          KUBECONFIG: kubeconfig.yaml
+          KUBECONFIG: /home/runner/kubeconfig.yaml
         run: |
           kubectl get policyreports.wgpolicyk8s.io -o yaml > ./pipeline/policyreports.wgpolicyk8s.io.yaml
       - name: Run P2C
