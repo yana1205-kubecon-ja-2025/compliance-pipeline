@@ -78,6 +78,7 @@ jobs:
         env:
           KUBECONFIG: /home/runner/kubeconfig.yaml
         run: |
+          kubectl get polr -A
           kubectl get policyreports.wgpolicyk8s.io -o yaml > ./pipeline/policyreports.wgpolicyk8s.io.yaml
       - name: Run P2C
         run: |
