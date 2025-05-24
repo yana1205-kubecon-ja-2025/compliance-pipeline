@@ -1,13 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: no-tls
+  name: good-application
   namespace: default
 spec:
   tls:
-    - hosts:
-        - example.com
-      secretName: my-cert 
+    - secretName: my-cert
   rules:
     - host: example.com
       http:

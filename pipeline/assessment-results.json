@@ -1,9 +1,9 @@
 {
   "assessment-results": {
-    "uuid": "5a7a5e48-d4a6-4bb4-99d1-ac766fa6586e",
+    "uuid": "d77177e5-d2d2-41b5-a139-8e9139db8296",
     "metadata": {
       "title": "Kyverno Assessment Results",
-      "last-modified": "2025-05-22T07:24:17+00:00",
+      "last-modified": "2025-05-24T19:55:48+00:00",
       "version": "3.9.0",
       "oscal-version": "1.1.3"
     },
@@ -12,20 +12,16 @@
     },
     "results": [
       {
-        "uuid": "696166ad-fef1-41fc-8ac5-3717b247d9e5",
+        "uuid": "45037e18-27ab-40d8-b79d-c81f99b4ee65",
         "title": "Kyverno Assessment Results",
         "description": "OSCAL Assessment Results from Kyverno",
-        "start": "2025-05-22T07:24:17+00:00",
+        "start": "2025-05-24T19:55:48+00:00",
         "reviewed-controls": {
           "control-selections": [
             {
               "include-controls": [
                 {
-                  "control-id": "cm-2",
-                  "statement-ids": []
-                },
-                {
-                  "control-id": "cm-2.1",
+                  "control-id": "sc-13",
                   "statement-ids": []
                 }
               ]
@@ -34,13 +30,13 @@
         },
         "observations": [
           {
-            "uuid": "64e00159-ba8f-438d-be06-f40300728b8a",
-            "title": "allowed-base-images",
-            "description": "allowed-base-images",
+            "uuid": "421a98d5-743d-4a6b-b3f0-8680694008ed",
+            "title": "require-tls-on-ingress",
+            "description": "require-tls-on-ingress",
             "props": [
               {
                 "name": "assessment-rule-id",
-                "value": "allowed-base-images"
+                "value": "require-tls-on-ingress"
               }
             ],
             "methods": [
@@ -48,99 +44,13 @@
             ],
             "subjects": [
               {
-                "subject-uuid": "ee60807e-c7ec-4430-97c1-13e72e28284e",
+                "subject-uuid": "7efaabe9-ac2d-417d-b267-4d5ad65ccf02",
                 "type": "resource",
-                "title": "v1/Pod badpod default",
+                "title": "networking.k8s.io/v1/Ingress bad-application default",
                 "props": [
                   {
                     "name": "resource-id",
-                    "value": "69bb6a23-3f9f-41b1-b488-a7edbabb724a"
-                  },
-                  {
-                    "name": "result",
-                    "value": "failure"
-                  },
-                  {
-                    "name": "evaluated-on",
-                    "value": "2025-05-22T04:49:10+00:00"
-                  },
-                  {
-                    "name": "reason",
-                    "value": "validation failure: This container image's base is not in the approved list or is not specified. Only pre-approved base images may be used. Please contact the platform team for assistance."
-                  }
-                ]
-              },
-              {
-                "subject-uuid": "fce94f3a-1900-48e5-9d77-4ba8bb4fe679",
-                "type": "resource",
-                "title": "v1/Pod kyverno-1747888561-scale-to-zero-vwmx6 default",
-                "props": [
-                  {
-                    "name": "resource-id",
-                    "value": "7f374706-4206-490d-a33b-473cf67c7d7b"
-                  },
-                  {
-                    "name": "result",
-                    "value": "failure"
-                  },
-                  {
-                    "name": "evaluated-on",
-                    "value": "2025-05-22T04:49:10+00:00"
-                  },
-                  {
-                    "name": "reason",
-                    "value": "validation failure: This container image's base is not in the approved list or is not specified. Only pre-approved base images may be used. Please contact the platform team for assistance."
-                  }
-                ]
-              },
-              {
-                "subject-uuid": "ee6c0495-380a-49f1-9275-9aff3a7d9ccd",
-                "type": "resource",
-                "title": "batch/v1/Job kyverno-1747888561-scale-to-zero default",
-                "props": [
-                  {
-                    "name": "resource-id",
-                    "value": "c57f0877-53ef-4aee-b0f9-74c918f48c9c"
-                  },
-                  {
-                    "name": "result",
-                    "value": "failure"
-                  },
-                  {
-                    "name": "evaluated-on",
-                    "value": "2025-05-22T04:49:11+00:00"
-                  },
-                  {
-                    "name": "reason",
-                    "value": "validation failure: This container image's base is not in the approved list or is not specified. Only pre-approved base images may be used. Please contact the platform team for assistance."
-                  }
-                ]
-              }
-            ],
-            "collected": "2025-05-22T07:24:17+00:00"
-          },
-          {
-            "uuid": "573ae10c-8bd2-465e-88c4-43c9f9d927ca",
-            "title": "disallow-capabilities",
-            "description": "disallow-capabilities",
-            "props": [
-              {
-                "name": "assessment-rule-id",
-                "value": "disallow-capabilities"
-              }
-            ],
-            "methods": [
-              "AUTOMATED"
-            ],
-            "subjects": [
-              {
-                "subject-uuid": "84afd64a-f2f6-4794-82f1-fef2cd92609c",
-                "type": "resource",
-                "title": "v1/Pod badpod default",
-                "props": [
-                  {
-                    "name": "resource-id",
-                    "value": "69bb6a23-3f9f-41b1-b488-a7edbabb724a"
+                    "value": "b31b03b0-ce18-4f1e-a756-7a5a6f23c85c"
                   },
                   {
                     "name": "result",
@@ -148,22 +58,22 @@
                   },
                   {
                     "name": "evaluated-on",
-                    "value": "2025-05-22T04:49:06+00:00"
+                    "value": "2025-05-24T19:53:54+00:00"
                   },
                   {
                     "name": "reason",
-                    "value": "validation rule 'adding-capabilities' passed."
+                    "value": "validation rule 'require-tls' anyPattern[1] passed."
                   }
                 ]
               },
               {
-                "subject-uuid": "3e9d7c9e-5d1a-4f68-8c1d-e5a8dd0c25ee",
+                "subject-uuid": "4d58fe66-de7b-467a-92f0-06bb728d553d",
                 "type": "resource",
-                "title": "v1/Pod kyverno-1747888561-scale-to-zero-vwmx6 default",
+                "title": "networking.k8s.io/v1/Ingress good-application default",
                 "props": [
                   {
                     "name": "resource-id",
-                    "value": "7f374706-4206-490d-a33b-473cf67c7d7b"
+                    "value": "b766302f-37e9-4122-8202-a55e8e38ec31"
                   },
                   {
                     "name": "result",
@@ -171,39 +81,16 @@
                   },
                   {
                     "name": "evaluated-on",
-                    "value": "2025-05-22T04:49:06+00:00"
+                    "value": "2025-05-24T19:51:05+00:00"
                   },
                   {
                     "name": "reason",
-                    "value": "validation rule 'adding-capabilities' passed."
-                  }
-                ]
-              },
-              {
-                "subject-uuid": "d13c7aec-bb11-4810-aa45-768632fabb9d",
-                "type": "resource",
-                "title": "batch/v1/Job kyverno-1747888561-scale-to-zero default",
-                "props": [
-                  {
-                    "name": "resource-id",
-                    "value": "c57f0877-53ef-4aee-b0f9-74c918f48c9c"
-                  },
-                  {
-                    "name": "result",
-                    "value": "pass"
-                  },
-                  {
-                    "name": "evaluated-on",
-                    "value": "2025-05-22T04:49:10+00:00"
-                  },
-                  {
-                    "name": "reason",
-                    "value": "validation rule 'autogen-adding-capabilities' passed."
+                    "value": "validation rule 'require-tls' anyPattern[1] passed."
                   }
                 ]
               }
             ],
-            "collected": "2025-05-22T07:24:17+00:00"
+            "collected": "2025-05-24T19:55:48+00:00"
           }
         ]
       }

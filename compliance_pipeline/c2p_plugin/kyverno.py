@@ -14,10 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import pathlib
+from pathlib import Path
 import shutil
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
+import re
 
 import yaml
 from c2p.common.err import C2PError
@@ -129,15 +130,15 @@ class PluginKyverno(PluginSpec):
         parameters = policy.parameters
         policy_template_dir = self.config.policy_template_dir
         deliverable_policy_dir = self.config.deliverable_policy_dir
-        if not pathlib.Path(deliverable_policy_dir).exists():
+        if not Path(deliverable_policy_dir).exists():
             logger.info(f"The deliverable policy directory '{deliverable_policy_dir}' is not found. Creating...")
-            pathlib.Path(deliverable_policy_dir).mkdir(parents=True)
+            Path(deliverable_policy_dir).mkdir(parents=True)
         else:
-            if not pathlib.Path(deliverable_policy_dir).is_dir():
+            if not Path(deliverable_policy_dir).is_dir():
                 raise C2PError(f"The deliverable policy directory '{deliverable_policy_dir}' is not directory.")
         for rule_set in rule_sets:
-            each_policy_template_dir = pathlib.Path(f'{policy_template_dir}/{rule_set.rule_id}')
-            each_deliverable_policy_dir = pathlib.Path(f'{deliverable_policy_dir}/{rule_set.rule_id}')
+            each_policy_template_dir = Path(f'{policy_template_dir}/{rule_set.rule_id}')
+            each_deliverable_policy_dir = Path(f'{deliverable_policy_dir}/{rule_set.rule_id}')
             shutil.copytree(each_policy_template_dir, each_deliverable_policy_dir, dirs_exist_ok=True)
             contents = each_deliverable_policy_dir.glob('**/*')
             for path in list(contents):
@@ -148,6 +149,13 @@ class PluginKyverno(PluginSpec):
                     kv = dict(map(lambda x: (x.id, x.value), parameters))
                     rendered = tp.render(kv)
                     path.write_text(rendered)
+        for parameter in parameters:
+            matched = re.match(r'(.*)-enforced', parameter.id)
+            if matched and parameter.value.lower() == "true":
+                enforce_policy_id = matched[0]
+                source = Path(policy_template_dir) / enforce_policy_id
+                dest = Path(deliverable_policy_dir) / enforce_policy_id
+                shutil.copytree(source, dest, dirs_exist_ok=True)
 
     def __is_policy_file(self, yamldocs: List[Dict[str, Any]]) -> bool:
         for yamldoc in yamldocs:

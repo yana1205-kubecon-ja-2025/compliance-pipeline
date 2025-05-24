@@ -1,0 +1,16 @@
+[project]
+name = "compliance-pipeline"
+version = "0.1.0"
+description = "..."
+authors = [{ name = "Your Name", email = "you@example.com" }]
+dependencies = [
+  "compliance-trestle==3.9.0",
+  "compliance-to-policy==0.5.0"
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+includes = ["my_gpt"]
