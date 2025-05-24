@@ -1,9 +1,9 @@
 {
   "assessment-results": {
-    "uuid": "d77177e5-d2d2-41b5-a139-8e9139db8296",
+    "uuid": "d2612376-13d5-4c04-b202-731d9bbe6579",
     "metadata": {
       "title": "Kyverno Assessment Results",
-      "last-modified": "2025-05-24T19:55:48+00:00",
+      "last-modified": "2025-05-24T21:43:24+00:00",
       "version": "3.9.0",
       "oscal-version": "1.1.3"
     },
@@ -12,10 +12,10 @@
     },
     "results": [
       {
-        "uuid": "45037e18-27ab-40d8-b79d-c81f99b4ee65",
+        "uuid": "559e1f29-3382-4e50-b56a-2dd949676873",
         "title": "Kyverno Assessment Results",
         "description": "OSCAL Assessment Results from Kyverno",
-        "start": "2025-05-24T19:55:48+00:00",
+        "start": "2025-05-24T21:43:24+00:00",
         "reviewed-controls": {
           "control-selections": [
             {
@@ -28,71 +28,7 @@
             }
           ]
         },
-        "observations": [
-          {
-            "uuid": "421a98d5-743d-4a6b-b3f0-8680694008ed",
-            "title": "require-tls-on-ingress",
-            "description": "require-tls-on-ingress",
-            "props": [
-              {
-                "name": "assessment-rule-id",
-                "value": "require-tls-on-ingress"
-              }
-            ],
-            "methods": [
-              "AUTOMATED"
-            ],
-            "subjects": [
-              {
-                "subject-uuid": "7efaabe9-ac2d-417d-b267-4d5ad65ccf02",
-                "type": "resource",
-                "title": "networking.k8s.io/v1/Ingress bad-application default",
-                "props": [
-                  {
-                    "name": "resource-id",
-                    "value": "b31b03b0-ce18-4f1e-a756-7a5a6f23c85c"
-                  },
-                  {
-                    "name": "result",
-                    "value": "pass"
-                  },
-                  {
-                    "name": "evaluated-on",
-                    "value": "2025-05-24T19:53:54+00:00"
-                  },
-                  {
-                    "name": "reason",
-                    "value": "validation rule 'require-tls' anyPattern[1] passed."
-                  }
-                ]
-              },
-              {
-                "subject-uuid": "4d58fe66-de7b-467a-92f0-06bb728d553d",
-                "type": "resource",
-                "title": "networking.k8s.io/v1/Ingress good-application default",
-                "props": [
-                  {
-                    "name": "resource-id",
-                    "value": "b766302f-37e9-4122-8202-a55e8e38ec31"
-                  },
-                  {
-                    "name": "result",
-                    "value": "pass"
-                  },
-                  {
-                    "name": "evaluated-on",
-                    "value": "2025-05-24T19:51:05+00:00"
-                  },
-                  {
-                    "name": "reason",
-                    "value": "validation rule 'require-tls' anyPattern[1] passed."
-                  }
-                ]
-              }
-            ],
-            "collected": "2025-05-24T19:55:48+00:00"
-          }
-        ]
+        "observations": []
       }
     ]
   }
