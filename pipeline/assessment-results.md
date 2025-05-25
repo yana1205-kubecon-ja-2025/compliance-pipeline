@@ -13,7 +13,7 @@ Rule `require-tls-on-ingress (Kyverno)`:
 <details><summary>Details</summary>
 
 
-  - Subject UUID: 496c30b1-80b5-48c3-a2c6-936ce0e31d9f
+  - Subject UUID: a9e604d8-3862-4a8f-b49b-d1446009c22e
     - Title: networking.k8s.io/v1/Ingress good-application default
     - Result: pass :white_check_mark:
     - Reason:
@@ -22,7 +22,7 @@ Rule `require-tls-on-ingress (Kyverno)`:
       ```
 
 
-  - Subject UUID: dacd0467-ad72-4fba-a4d1-ca8834deacd1
+  - Subject UUID: 3c6da0de-40e2-4a52-9be8-88cb17400a4a
     - Title: networking.k8s.io/v1/Ingress bad-application default
     - Result: failure :x:
     - Reason:

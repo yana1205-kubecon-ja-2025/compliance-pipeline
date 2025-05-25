@@ -1,9 +1,9 @@
 {
   "assessment-results": {
-    "uuid": "5eaffeac-f5cf-49af-a7ba-4ea04ff2d3e5",
+    "uuid": "3fe4413b-6e0d-47cc-8661-e8af1026805b",
     "metadata": {
       "title": "Kyverno Assessment Results",
-      "last-modified": "2025-05-25T02:45:09+00:00",
+      "last-modified": "2025-05-25T02:50:03+00:00",
       "version": "3.9.0",
       "oscal-version": "1.1.3"
     },
@@ -12,10 +12,10 @@
     },
     "results": [
       {
-        "uuid": "0bb84317-ca82-4daf-96fc-5813f77c6053",
+        "uuid": "b2108757-0fe5-4c68-93b9-24530f60ed90",
         "title": "Kyverno Assessment Results",
         "description": "OSCAL Assessment Results from Kyverno",
-        "start": "2025-05-25T02:45:09+00:00",
+        "start": "2025-05-25T02:50:03+00:00",
         "reviewed-controls": {
           "control-selections": [
             {
@@ -30,7 +30,7 @@
         },
         "observations": [
           {
-            "uuid": "51872b9c-c061-469a-9a7a-c202084442ff",
+            "uuid": "38517d1d-e0e7-4855-9115-0837ac09f3b2",
             "title": "require-tls-on-ingress",
             "description": "require-tls-on-ingress",
             "props": [
@@ -44,7 +44,7 @@
             ],
             "subjects": [
               {
-                "subject-uuid": "496c30b1-80b5-48c3-a2c6-936ce0e31d9f",
+                "subject-uuid": "a9e604d8-3862-4a8f-b49b-d1446009c22e",
                 "type": "resource",
                 "title": "networking.k8s.io/v1/Ingress good-application default",
                 "props": [
@@ -58,7 +58,7 @@
                   },
                   {
                     "name": "evaluated-on",
-                    "value": "2025-05-25T02:44:43+00:00"
+                    "value": "2025-05-25T02:49:36+00:00"
                   },
                   {
                     "name": "reason",
@@ -67,7 +67,7 @@
                 ]
               },
               {
-                "subject-uuid": "dacd0467-ad72-4fba-a4d1-ca8834deacd1",
+                "subject-uuid": "3c6da0de-40e2-4a52-9be8-88cb17400a4a",
                 "type": "resource",
                 "title": "networking.k8s.io/v1/Ingress bad-application default",
                 "props": [
@@ -81,7 +81,7 @@
                   },
                   {
                     "name": "evaluated-on",
-                    "value": "2025-05-25T02:44:43+00:00"
+                    "value": "2025-05-25T02:49:36+00:00"
                   },
                   {
                     "name": "reason",
@@ -90,7 +90,7 @@
                 ]
               }
             ],
-            "collected": "2025-05-25T02:45:09+00:00"
+            "collected": "2025-05-25T02:50:03+00:00"
           }
         ]
       }
