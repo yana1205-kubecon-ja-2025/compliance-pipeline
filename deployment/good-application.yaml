@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: good-application
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   tls:
     - secretName: my-cert
@@ -16,4 +18,4 @@ spec:
               service:
                 name: my-service
                 port:
-                  number: 80
+                  number: 8443

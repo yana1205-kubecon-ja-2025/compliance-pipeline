@@ -14,9 +14,15 @@ spec:
       validate:
         message: "Ingress must have TLS configured (hosts or secretName)"
         anyPattern:
-          - spec:
+          - metadata:
+              annotations:
+                nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+            spec:
               tls:
                 - hosts: "*"
-          - spec:
+          - metadata:
+              annotations:
+                nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+            spec:
               tls:
                 - secretName: "*"

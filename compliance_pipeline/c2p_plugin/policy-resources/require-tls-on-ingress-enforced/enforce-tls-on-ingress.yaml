@@ -13,6 +13,9 @@ spec:
             - Ingress
       mutate:
         patchStrategicMerge:
+          metadata:
+            annotations:
+              nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
           spec:
             tls:
               - secretName: my-cert
