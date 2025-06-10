@@ -1,0 +1,113 @@
+{
+  "component-definition": {
+    "uuid": "7859cb67-0f74-49ae-9600-911b9175dea9",
+    "metadata": {
+      "title": "Component Definition",
+      "last-modified": "2025-06-10T20:49:11+00:00",
+      "version": "1.0",
+      "oscal-version": "1.1.3"
+    },
+    "components": [
+      {
+        "uuid": "1a1190e8-9278-4109-b36f-f6a1d00da7c0",
+        "type": "Service",
+        "title": "Managed Kubernetes",
+        "description": "Managed Kubernetes cluster",
+        "props": [
+          {
+            "name": "Rule_Id",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "require-tls-on-ingress",
+            "remarks": "rule_set_0"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "All Ingress resources must be configured to use TLS for secure communication.",
+            "remarks": "rule_set_0"
+          },
+          {
+            "name": "Parameter_Id",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "require-tls-on-ingress-enforced",
+            "remarks": "rule_set_0"
+          },
+          {
+            "name": "Parameter_Value_Alternatives",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "FALSE",
+            "remarks": "rule_set_0"
+          },
+          {
+            "name": "Check_Id",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "require-tls-on-ingress",
+            "remarks": "rule_set_0"
+          },
+          {
+            "name": "Check_Description",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "Checks that all Ingress resources are configured to use TLS for secure communication by Kyverno",
+            "remarks": "rule_set_0"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "0b931134-21a1-4f4d-aa9f-57fc4c1ab0b0",
+            "source": "https://github.com/usnistgov/oscal-content/blob/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json",
+            "description": "NIST Special Publication 800-53 Revision 5 HIGH IMPACT BASELINE",
+            "set-parameters": [
+              {
+                "param-id": "require-tls-on-ingress-enforced",
+                "values": [
+                  "FALSE"
+                ]
+              }
+            ],
+            "implemented-requirements": [
+              {
+                "uuid": "27dad9dd-d38f-4d4d-adff-c104a0db2f9b",
+                "control-id": "sc-13",
+                "description": "",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+                    "value": "require-tls-on-ingress"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "d328db95-b40a-423a-b02b-316f1bfd6243",
+        "type": "Validation",
+        "title": "Kyverno",
+        "description": "Kyverno as Policy Validation Point",
+        "props": [
+          {
+            "name": "Rule_Id",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "require-tls-on-ingress",
+            "remarks": "rule_set_1"
+          },
+          {
+            "name": "Check_Id",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "require-tls-on-ingress",
+            "remarks": "rule_set_1"
+          },
+          {
+            "name": "Check_Description",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "Checks that all Ingress resources are configured to use TLS for secure communication by Kyverno",
+            "remarks": "rule_set_1"
+          }
+        ],
+        "control-implementations": []
+      }
+    ]
+  }
+}
