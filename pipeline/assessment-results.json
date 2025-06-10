@@ -1,0 +1,35 @@
+{
+  "assessment-results": {
+    "uuid": "9943f96b-d423-4dde-a626-fd896a11813d",
+    "metadata": {
+      "title": "Kyverno Assessment Results",
+      "last-modified": "2025-06-10T20:43:39+00:00",
+      "version": "3.9.0",
+      "oscal-version": "1.1.3"
+    },
+    "import-ap": {
+      "href": "https://not-available-for-now"
+    },
+    "results": [
+      {
+        "uuid": "9d37ec8f-0bd5-4f32-8a1f-7d4b078c81e4",
+        "title": "Kyverno Assessment Results",
+        "description": "OSCAL Assessment Results from Kyverno",
+        "start": "2025-06-10T20:43:39+00:00",
+        "reviewed-controls": {
+          "control-selections": [
+            {
+              "include-controls": [
+                {
+                  "control-id": "sc-13",
+                  "statement-ids": []
+                }
+              ]
+            }
+          ]
+        },
+        "observations": []
+      }
+    ]
+  }
+}
