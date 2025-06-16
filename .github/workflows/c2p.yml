@@ -66,6 +66,7 @@ jobs:
           do
             kubectl apply -f $file
           done
+          kubectl annotate ingress bad-application redeploy=true --overwrite
           kubectl get cpol
           kubectl get polr -A
   
