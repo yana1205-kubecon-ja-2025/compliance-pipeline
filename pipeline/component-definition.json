@@ -1,15 +1,15 @@
 {
   "component-definition": {
-    "uuid": "4349e7e2-6be3-4f5f-811d-2417d0b49700",
+    "uuid": "83508f42-2eaf-42aa-942f-24a89cd4b2b8",
     "metadata": {
       "title": "Component Definition",
-      "last-modified": "2025-06-16T21:33:41+00:00",
+      "last-modified": "2025-06-16T21:53:08+00:00",
       "version": "1.0",
       "oscal-version": "1.1.3"
     },
     "components": [
       {
-        "uuid": "c9cdb1c7-555b-45ba-9821-60fba0dc7a3a",
+        "uuid": "dcd044ed-7d46-4a08-9966-2ccb53361cce",
         "type": "Service",
         "title": "Managed Kubernetes",
         "description": "Managed Kubernetes cluster",
@@ -33,9 +33,15 @@
             "remarks": "rule_set_0"
           },
           {
+            "name": "Parameter_Description",
+            "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
+            "value": "Indicates whether TLS is enforced on Ingress resources by automatically adding TLS configuration if missing.",
+            "remarks": "rule_set_0"
+          },
+          {
             "name": "Parameter_Value_Alternatives",
             "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
-            "value": "FALSE",
+            "value": "TRUE",
             "remarks": "rule_set_0"
           },
           {
@@ -53,7 +59,7 @@
         ],
         "control-implementations": [
           {
-            "uuid": "75d1796f-3aa0-40a9-9576-3bd5783174ca",
+            "uuid": "a957c325-703f-413e-9fd9-c10b7961f60e",
             "source": "https://github.com/usnistgov/oscal-content/blob/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json",
             "description": "NIST Special Publication 800-53 Revision 5 HIGH IMPACT BASELINE",
             "set-parameters": [
@@ -66,7 +72,7 @@
             ],
             "implemented-requirements": [
               {
-                "uuid": "98940fa1-7785-4143-933d-4356b56fe69f",
+                "uuid": "8fcf7f3c-94ec-4f03-bf2e-12c6572e6836",
                 "control-id": "sc-13",
                 "description": "",
                 "props": [
@@ -82,7 +88,7 @@
         ]
       },
       {
-        "uuid": "47051cdc-db06-4511-a17a-735d058118dc",
+        "uuid": "bfa504da-2c6c-4e4d-a2b5-286c019029ed",
         "type": "Validation",
         "title": "Kyverno",
         "description": "Kyverno as Policy Validation Point",
