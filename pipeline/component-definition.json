@@ -1,15 +1,15 @@
 {
   "component-definition": {
-    "uuid": "91aeab68-ef01-436f-bb35-272659ed2463",
+    "uuid": "4349e7e2-6be3-4f5f-811d-2417d0b49700",
     "metadata": {
       "title": "Component Definition",
-      "last-modified": "2025-06-16T20:43:08+00:00",
+      "last-modified": "2025-06-16T21:33:41+00:00",
       "version": "1.0",
       "oscal-version": "1.1.3"
     },
     "components": [
       {
-        "uuid": "dccbbd45-2248-4fea-b3e2-96a1c9e5a0c0",
+        "uuid": "c9cdb1c7-555b-45ba-9821-60fba0dc7a3a",
         "type": "Service",
         "title": "Managed Kubernetes",
         "description": "Managed Kubernetes cluster",
@@ -53,7 +53,7 @@
         ],
         "control-implementations": [
           {
-            "uuid": "31177d5c-f743-4514-af09-a11750713779",
+            "uuid": "75d1796f-3aa0-40a9-9576-3bd5783174ca",
             "source": "https://github.com/usnistgov/oscal-content/blob/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json",
             "description": "NIST Special Publication 800-53 Revision 5 HIGH IMPACT BASELINE",
             "set-parameters": [
@@ -66,7 +66,7 @@
             ],
             "implemented-requirements": [
               {
-                "uuid": "ab470c5b-e701-4c2a-9b00-02ea82e01e0a",
+                "uuid": "98940fa1-7785-4143-933d-4356b56fe69f",
                 "control-id": "sc-13",
                 "description": "",
                 "props": [
@@ -82,7 +82,7 @@
         ]
       },
       {
-        "uuid": "bde88a5d-c77c-42a9-86ca-9c5556264f9a",
+        "uuid": "47051cdc-db06-4511-a17a-735d058118dc",
         "type": "Validation",
         "title": "Kyverno",
         "description": "Kyverno as Policy Validation Point",
