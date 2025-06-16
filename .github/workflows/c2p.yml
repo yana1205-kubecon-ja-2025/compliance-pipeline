@@ -1,6 +1,9 @@
 name: C2P
 
 on:
+  push:
+    branches:
+      - compliance-pipeline
   workflow_dispatch:
 
 permissions:
@@ -14,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: compliance-pipeline
       - name: Convert Component Definition CSV to Component Definition JSON
         run: |
           python3 -m c2p tools csv-to-oscal-cd \
@@ -24,7 +29,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git checkout -b compliance-pipeline
           git add ./pipeline/component-definition.json
           git commit -m "Update Component Definition"
           git push origin compliance-pipeline -f
