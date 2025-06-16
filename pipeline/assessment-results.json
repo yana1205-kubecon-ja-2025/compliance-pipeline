@@ -1,9 +1,9 @@
 {
   "assessment-results": {
-    "uuid": "0965361f-4100-4d57-8cbc-b675438cdc17",
+    "uuid": "396bc90a-db41-4cf3-9a29-fc94fc113784",
     "metadata": {
       "title": "Kyverno Assessment Results",
-      "last-modified": "2025-06-16T21:34:34+00:00",
+      "last-modified": "2025-06-16T21:54:07+00:00",
       "version": "3.9.0",
       "oscal-version": "1.1.3"
     },
@@ -12,10 +12,10 @@
     },
     "results": [
       {
-        "uuid": "1b2f71ee-e61f-4fc9-8646-76fbf9203e01",
+        "uuid": "2d358320-93e9-4afb-84e5-e05e402eeda7",
         "title": "Kyverno Assessment Results",
         "description": "OSCAL Assessment Results from Kyverno",
-        "start": "2025-06-16T21:34:34+00:00",
+        "start": "2025-06-16T21:54:07+00:00",
         "reviewed-controls": {
           "control-selections": [
             {
@@ -30,7 +30,7 @@
         },
         "observations": [
           {
-            "uuid": "bac81fbd-c265-47dd-a604-3e64e01d5129",
+            "uuid": "4c7f05be-3776-4a73-bfa9-f0a0ef3c1fdd",
             "title": "require-tls-on-ingress",
             "description": "require-tls-on-ingress",
             "props": [
@@ -44,7 +44,7 @@
             ],
             "subjects": [
               {
-                "subject-uuid": "2918468a-b094-4ead-b28e-19f2d9f88a3e",
+                "subject-uuid": "7199dc00-29fc-4f46-8981-9f21f0bd7bf6",
                 "type": "resource",
                 "title": "networking.k8s.io/v1/Ingress good-application default",
                 "props": [
@@ -58,7 +58,7 @@
                   },
                   {
                     "name": "evaluated-on",
-                    "value": "2025-06-16T20:44:06+00:00"
+                    "value": "2025-06-16T21:53:37+00:00"
                   },
                   {
                     "name": "reason",
@@ -67,7 +67,7 @@
                 ]
               },
               {
-                "subject-uuid": "cf2d73ed-dcd1-41fb-8667-5bab6a14af97",
+                "subject-uuid": "a6fc5a3d-152f-4777-adec-a326a03f1766",
                 "type": "resource",
                 "title": "networking.k8s.io/v1/Ingress bad-application default",
                 "props": [
@@ -77,20 +77,20 @@
                   },
                   {
                     "name": "result",
-                    "value": "failure"
+                    "value": "pass"
                   },
                   {
                     "name": "evaluated-on",
-                    "value": "2025-06-16T21:34:16+00:00"
+                    "value": "2025-06-16T21:53:39+00:00"
                   },
                   {
                     "name": "reason",
-                    "value": "validation error: Ingress must have TLS configured (hosts or secretName). rule require-tls[0] failed at path /metadata/annotations/nginx.ingress.kubernetes.io/force-ssl-redirect/ rule require-tls[1] failed at path /metadata/annotations/nginx.ingress.kubernetes.io/force-ssl-redirect/"
+                    "value": "validation rule 'require-tls' anyPattern[1] passed."
                   }
                 ]
               }
             ],
-            "collected": "2025-06-16T21:34:34+00:00"
+            "collected": "2025-06-16T21:54:07+00:00"
           }
         ]
       }
