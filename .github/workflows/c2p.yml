@@ -112,13 +112,42 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require("fs");
+
             const bodyContent = fs.readFileSync("./pipeline/assessment-results.md", "utf8");
-            const res = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              head: "compliance-pipeline",
-              base: "main",
-              title: "Update security posture: Enforce TLS on Ingress",
-              body: bodyContent
+
+            const { owner, repo } = context.repo;
+            const head = "compliance-pipeline";
+            const base = "main";
+
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner,
+              repo,
+              head: `${owner}:${head}`,
+              base,
+              state: "open",
             });
-            core.info(`Created PR: ${res.data.html_url}`);
+
+            if (pullRequests.length > 0) {
+              const existingPR = pullRequests[0];
+
+              const commentRes = await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existingPR.number,
+                body: bodyContent,
+              });
+
+              core.info(`PR already exists: ${existingPR.html_url}`);
+              core.info(`Added comment: ${commentRes.data.html_url}`);
+            } else {
+              const res = await github.rest.pulls.create({
+                owner,
+                repo,
+                head,
+                base,
+                title: "Update security posture: Enforce TLS on Ingress",
+                body: bodyContent,
+              });
+
+              core.info(`Created PR: ${res.data.html_url}`);
+            }
