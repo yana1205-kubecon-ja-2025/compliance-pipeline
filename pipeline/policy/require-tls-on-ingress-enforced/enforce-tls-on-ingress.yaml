@@ -1,0 +1,21 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: enforce-tls-on-ingress
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: require-tls
+      match:
+        resources:
+          kinds:
+            - Ingress
+      mutate:
+        patchStrategicMerge:
+          metadata:
+            annotations:
+              nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          spec:
+            tls:
+              - secretName: my-cert
