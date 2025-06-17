@@ -13,7 +13,7 @@ Rule `require-tls-on-ingress (Kyverno)`:
 <details><summary>Details</summary>
 
 
-  - Subject UUID: 83854f79-be23-4c77-9911-437d39ef3501
+  - Subject UUID: d396f9a4-94f5-4d18-9a57-f017918364a3
     - Title: networking.k8s.io/v1/Ingress good-application default
     - Result: pass :white_check_mark:
     - Reason:
@@ -22,12 +22,12 @@ Rule `require-tls-on-ingress (Kyverno)`:
       ```
 
 
-  - Subject UUID: 1baf6e42-b086-4613-b5d5-fa7ed49a3fa2
+  - Subject UUID: 026feeaf-fb1f-4822-b0f8-9c2e41f9827c
     - Title: networking.k8s.io/v1/Ingress bad-application default
-    - Result: failure :x:
+    - Result: pass :white_check_mark:
     - Reason:
       ```
-      validation error: Ingress must have TLS configured (hosts or secretName). rule require-tls[0] failed at path /metadata/annotations/nginx.ingress.kubernetes.io/force-ssl-redirect/ rule require-tls[1] failed at path /metadata/annotations/nginx.ingress.kubernetes.io/force-ssl-redirect/
+      validation rule 'require-tls' anyPattern[1] passed.
       ```
 
 </details>
