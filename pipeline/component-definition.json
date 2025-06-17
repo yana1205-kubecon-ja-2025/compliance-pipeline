@@ -1,15 +1,15 @@
 {
   "component-definition": {
-    "uuid": "c98537b2-ce9f-46c0-93a7-b9acd5714d80",
+    "uuid": "d92ba4d7-a3af-423c-949a-e0d6fbe477f4",
     "metadata": {
       "title": "Component Definition",
-      "last-modified": "2025-06-17T00:28:18+00:00",
+      "last-modified": "2025-06-17T00:38:19+00:00",
       "version": "1.0",
       "oscal-version": "1.1.3"
     },
     "components": [
       {
-        "uuid": "907d7e08-b49f-40cb-a37e-42a630f23373",
+        "uuid": "30f31384-d316-4dc1-bfe6-4c0ad116b8f3",
         "type": "Service",
         "title": "Managed Kubernetes",
         "description": "Managed Kubernetes cluster",
@@ -41,7 +41,7 @@
           {
             "name": "Parameter_Value_Alternatives",
             "ns": "http://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd/ibmcloud",
-            "value": "FALSE",
+            "value": "TRUE",
             "remarks": "rule_set_0"
           },
           {
@@ -59,7 +59,7 @@
         ],
         "control-implementations": [
           {
-            "uuid": "7ea9500e-ad50-4038-99c3-e61caa21c68c",
+            "uuid": "36fe1694-c734-430c-a752-acd346ca90cb",
             "source": "https://github.com/usnistgov/oscal-content/blob/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json",
             "description": "NIST Special Publication 800-53 Revision 5 HIGH IMPACT BASELINE",
             "set-parameters": [
@@ -72,7 +72,7 @@
             ],
             "implemented-requirements": [
               {
-                "uuid": "a3d821db-919e-4d29-9c0d-641f0435a10a",
+                "uuid": "7890546c-c4b9-4722-9f92-2ac29cc98354",
                 "control-id": "sc-13",
                 "description": "",
                 "props": [
@@ -88,7 +88,7 @@
         ]
       },
       {
-        "uuid": "5ad85227-3a03-4d56-8469-1a0ee9eeb410",
+        "uuid": "c089ef36-de2c-4188-8539-493fe39e3054",
         "type": "Validation",
         "title": "Kyverno",
         "description": "Kyverno as Policy Validation Point",
